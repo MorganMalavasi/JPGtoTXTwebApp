@@ -4,6 +4,7 @@ const tesseract = require('tesseract.js');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const ejs = require('ejs');
+const fs = require('fs');
 
 // set storage engine 
 const storage = multer.diskStorage({
@@ -63,7 +64,6 @@ app.post('/upload', (req,res) => {
                     msg: 'Error: no File Selected'
                 });
             } else {
-
                 worker
                 .recognize('./public/'+req.file.filename)
                 .progress((p) => {
